@@ -124,7 +124,7 @@ class DataCleaning:
         timestamp_df['combined'] = timestamp_df['year'].astype(str) + '-' + timestamp_df['month'].astype(str) + '-' + timestamp_df['day'].astype(str) + ' ' + timestamp_df['timestamp'].astype(str)
         timestamp_df['combined'].apply(clean_datetime)
         self.datetime_df['timestamp'].update(timestamp_df['combined'])
-        self.datetime_df.drop(['month', 'year', 'day', 'time_period'], axis=1, inplace=True)
+        # self.datetime_df.drop(['month', 'year', 'day', 'time_period'], axis=1, inplace=True)
         self.datetime_df.dropna(inplace=True)
         return self.datetime_df
 
@@ -141,7 +141,6 @@ cleaner = DataCleaning(datetime_df=datetime_df)
 clean_datetime_data = cleaner.clean_datetime_data()
 datetime_data_dbcon = DatabaseConnector(db_creds_path=my_db_creds_path)
 datetime_data_dbcon.upload_to_db(clean_datetime_data, 'dim_date_times')
-
 #%%
 # Extract, clean and upload orders data
 orders_dbcon = DatabaseConnector(db_creds_path=aicore_db_creds_path)
