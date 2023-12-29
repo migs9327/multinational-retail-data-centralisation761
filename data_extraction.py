@@ -61,6 +61,7 @@ class DataExtractor:
         datetime_response = requests.get(self.datetime_endpoint, json=True)
         datetime_dict = datetime_response.json()
         datetime_df = pd.DataFrame(datetime_dict)
+        datetime_df.index = datetime_df.index.astype(int)
         return datetime_df
 
 

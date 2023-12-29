@@ -117,16 +117,15 @@ class DataCleaning:
         self.orders_df.drop(['level_0', 'index', 'first_name', 'last_name', '1'], axis=1, inplace=True)
         return orders_df
     
-    def clean_datetime_data(self):
+    def clean_datetime_data(self):       
 
         self.datetime_df.replace('NULL', np.NaN, inplace=True)
         timestamp_df = self.datetime_df[['timestamp', 'month', 'year', 'day']]
         timestamp_df['combined'] = timestamp_df['year'].astype(str) + '-' + timestamp_df['month'].astype(str) + '-' + timestamp_df['day'].astype(str) + ' ' + timestamp_df['timestamp'].astype(str)
-        timestamp_df['combined'].apply(clean_datetime)
-        self.datetime_df['timestamp'].update(timestamp_df['combined'])
-        # self.datetime_df.drop(['month', 'year', 'day', 'time_period'], axis=1, inplace=True)
+        timestamp_df['combined'] = timestamp_df['combined'].apply(clean_datetime)
+        self.datetime_df['timestamp'] = timestamp_df['combined']
         self.datetime_df.dropna(inplace=True)
-        return self.datetime_df
+        return datetime_df
 
 
 #%%
@@ -181,4 +180,3 @@ clean_store_data = cleaner.clean_store_data()
 # %%
 sales_data_dbcon = DatabaseConnector(db_creds_path=my_db_creds_path)
 sales_data_dbcon.upload_to_db(clean_store_data, 'dim_store_details')
-# %%
