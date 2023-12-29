@@ -5,11 +5,16 @@
 
 This project aims to centralize and streamline the sales data management for a multinational company. The primary objective is to consolidate various data sources into a single, accessible database, enabling more efficient data analysis and decision-making. The project involves data extraction from diverse sources such as AWS RDS databases, PDF documents, APIs, and S3 buckets, followed by data cleaning and integration into a PostgreSQL database.
 
-Key learnings from this project so far:
-- Implementing data extraction from various sources using Python.
-- Handling and cleaning different data formats.
-- Utilizing database operations for storing and managing large datasets.
-- Developing a scalable and modular codebase that can be extended for additional data sources.
+## Key Learnings from This Project
+
+- **Implementing Data Extraction from Various Sources Using Python**: Developed methods to efficiently extract data from AWS RDS databases, PDF documents, APIs, and S3 buckets using Python.
+- **Handling and Cleaning Different Data Formats**: Applied techniques to clean and standardize data from diverse sources, ensuring data quality and consistency.
+- **Utilizing Database Operations for Storing and Managing Large Datasets**: Gained proficiency in using PostgreSQL for large-scale data storage and management.
+- **Developing a Scalable and Modular Codebase**: Created a codebase that can be easily extended for additional data sources and functionalities.
+- **Database Schema Design, Optimization, and Implementation of a Star Schema for Data Warehousing**: Enhanced skills in designing and optimizing a database schema, including data type conversions and merging columns. Developed a star-based database schema for efficient data analysis, which involved linking various dimension tables (prefixed with `dim_`) to a central fact table (`orders_table`). This approach facilitated improved data integrity, efficient data storage and retrieval, and enabled more effective data analysis.
+- **Advanced SQL Techniques**: Mastered advanced SQL operations, including data cleaning (like removing unwanted characters), creating human-readable categories based on data ranges, and handling NULL values.
+- **Data Integrity and Relationships**: Enhanced understanding of data integrity by implementing primary and foreign key constraints, ensuring the reliability and accuracy of database relationships.
+- **Unique Constraints and Data Cleaning in SQL**: Applied unique constraints for data consistency and performed additional data cleaning directly within SQL.
 
 ## Installation
 
